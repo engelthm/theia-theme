@@ -398,7 +398,7 @@ iframe.tmblr-iframe {
     --NPF-Image-Spacing: 1px;
 }
 [photoset-layout] div { padding: 1px; }
-img {
+.posts img {
     width: 100%;
     height: auto;
     z-index: 10;
