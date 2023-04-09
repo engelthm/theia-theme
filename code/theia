@@ -399,7 +399,7 @@ iframe.tmblr-iframe {
 }
 [photoset-layout] div { padding: 1px; }
 .posts img {
-    width: 100%;
+    width: inherit;
     height: auto;
     z-index: 10;
 }
