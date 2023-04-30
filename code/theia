@@ -132,10 +132,12 @@ pre {
     margin: 0;
     width: 100%;
     height: auto;
-    padding: 5px 10px;
-    display: inline-block;
-    overflow: scroll;
-    overflow-wrap: break-word;
+    padding: 15px;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap; 
+    white-space: -o-pre-wrap; 
+    word-wrap: break-word; 
     font-size: {text:font size};
     border: 2px solid #666b6e;
     color: #fff;
@@ -146,26 +148,62 @@ pre {
     -o-backdrop-filter: blur(10px);
     z-index: 10;
 }
-pre::-webkit-scrollbar { display: none; }
-hr {
-    border: 0;
-    width: 20%;
-    height: 2.5px;
-    background-color: {color:text};
-}
 blockquote {
-    border: 0;
     margin: 0;
     padding: 0;
+    border: none;
+}
+blockquote blockquote {
+    margin: 0;
+    padding: 15px;
+    border: 2px solid {color:text};
+    background-color: {color:text}25;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    -moz-backdrop-filter: blur(10px);
+    -o-backdrop-filter: blur(10px);
+}
+blockquote blockquote p { margin: 0; }
+.caption, .comment, p, ul, ol {  margin: 15px 0;  }
+.commenter, .answerer { 
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 0.75em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: {color:text};
+}
+.commenter a { color: {color:text}; }
+.commenter a:hover { color: {color:text}25; }
+.commenter img, .answerer img, .asker img { display: none; }
+.commenter a::before, a.tumblr_blog::before, figure.tmblr-full a::before {
+    width: 0;
+    height: 0;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    -webkit-transform: scaleX(0);
+    -moz-transform: scaleX(0);
+    -o-transform: scaleX(0);
+}
+figure.tmblr-full img:hover { cursor: url(https://i.imgur.com/jwLZ88S.png),progress!important;
+}
+figure.tmblr-full a:hover::after {
+    transform: scaleX(0);
+    -webkit-transform: scaleX(0);
+    -moz-transform: scaleX(0);
+    -o-transform: scaleX(0);
 }
 
 /* link styling */
-.land #desc #bio a, .head a, .head #contr b, .foot a, .c a, a.more_notes_link {
+.land #desc #bio a, .head a, .head #contr b, .foot a, .comment a, a.more_notes_link {
     display: inline-block;
     position: relative;
     color: {color:text};
 }
-.land #desc #bio a:after, .head a:after, .head #contr b:after, .foot a:after, .c a:after, a.more_notes_link:after {
+.land #desc #bio a::after, .head a::after, .head #contr b::after, .foot a::after, .comment a::after, a.more_notes_link::after {
     content: '';
     position: absolute;
     transform: scaleX(0);
@@ -183,7 +221,7 @@ blockquote {
     -o-transition: transform 0.5s ease-out;
     background-color: {color:text};
 }
-.c a:before, a.more_notes_link:before, .land #desc #bio a:before {
+.comment a::before, a.more_notes_link::before, .land #desc #bio a::before {
     content: '';
     position: absolute;
     width: 100%;
@@ -200,10 +238,10 @@ blockquote {
     -o-transform-origin: bottom left;
     background-color: {color:text}50;
 }
-.land #desc #bio a:hover, .head a:hover, .head #contr b:hover, .foot a:hover, .c a:hover, a.more_notes_link:hover {
+.land #desc #bio a:hover, .head a:hover, .head #contr b:hover, .foot a:hover, .comment a:hover, a.more_notes_link:hover {
     color: {color:text};
 }
-.land #desc #bio a:hover:after, .head a:hover:after, .head #contr b:hover:after, .foot a:hover:after, .c a:hover:after, a.more_notes_link:hover:after {
+.land #desc #bio a:hover::after, .head a:hover::after, .head #contr b:hover::after, .foot a:hover:after, .comment a:hover::after, a.more_notes_link:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
     -webkit-transform: scaleX(1);
@@ -213,54 +251,11 @@ blockquote {
     -o-transform: scaleX(1);
     -o-transform-origin: bottom left;
 }
-.c img a:before {
+.comment img a::before {
     width: 0;
     height: 0;
     bottom: 0;
     left: 0;
-    transform: scaleX(0);
-    -webkit-transform: scaleX(0);
-    -moz-transform: scaleX(0);
-    -o-transform: scaleX(0);
-}
-
-/* caption styling */
-blockquote blockquote {
-    margin: 0;
-    padding: 15px;
-    border: 2px solid {color:text};
-    background-color: {color:text}25;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    -moz-backdrop-filter: blur(10px);
-    -o-backdrop-filter: blur(10px);
-}
-blockquote blockquote p { margin: 0; }
-.c, p, ul, ol {  margin: 15px 0;  }
-a.tumblr_blog { 
-    margin: 0;
-    padding: 0;
-    border: none;
-    font-size: 0.75em;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: {color:text};
-}
-a.tumblr_blog:hover {  color: {color:text}; }
-a.tumblr_blog:before, figure.tmblr-full a:before {
-    width: 0;
-    height: 0;
-    bottom: 0;
-    left: 0;
-    transform: scaleX(0);
-    -webkit-transform: scaleX(0);
-    -moz-transform: scaleX(0);
-    -o-transform: scaleX(0);
-}
-figure.tmblr-full img:hover { cursor: url(https://i.imgur.com/jwLZ88S.png),progress!importan ;
-}
-figure.tmblr-full a:hover:after {
     transform: scaleX(0);
     -webkit-transform: scaleX(0);
     -moz-transform: scaleX(0);
@@ -406,9 +401,9 @@ figure.tmblr-full a:hover:after {
 /* photoset, photo posts */
 :root { 
     --NPF-Caption-Spacing: 15px; 
-    --NPF-Image-Spacing: 1px;
+    --NPF-Image-Spacing: 2px;
 }
-[photoset-layout] div { padding: 1px; }
+[photoset-layout] div { padding: 2px; }
 .posts img {
     width: 100%;
     height: auto;
@@ -416,22 +411,20 @@ figure.tmblr-full a:hover:after {
 }
 
 /* text posts */
-.t h1, .t h2, .t h3, .t h4, .t h5 { margin: 0 0 15px; }
+.text h1, .text h2, .text h3, .text h4, .text h5 { margin: 0 0 15px; }
 
 
 /* ask posts */
-.ask h1 a { color: {color:text}; }
-.ask h1 a:hover { color: {color:link hover}; }
-.ask #que b p {
-    margin: 0;
-    margin-top: 5px;
+.ask .asker h1 a { color: {color:text}; }
+.ask .asker h1 a:hover { color: {color:link hover}; }
+.ask .question_wrap b p {
+    margin: 5px 0 0;
     font-size: 0.75em;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
-.ask #que {
-    margin-top: 15px;
+.ask .question_wrap {
     padding: 15px;
     border: 2px solid {color:text};
 	background: {color:text}25;
@@ -440,15 +433,13 @@ figure.tmblr-full a:hover:after {
     -moz-backdrop-filter: blur(10px);
     -o-backdrop-filter: blur(10px);
 }
+.ask .answerer, .ask .replier { margin: 15px 0 0; }
 
 /* audio posts */
-.au {
+.audio {
     width: 100%;
     height: auto;
-    display: flex;
-    flex-directon: row;
-    justify-content: space-between;
-    align-content: center;
+    margin: 0 0 15px;
     border: 2px solid {color:text};
 	background: {color:text}25;
     backdrop-filter: blur(10px);
@@ -456,18 +447,24 @@ figure.tmblr-full a:hover:after {
     -moz-backdrop-filter: blur(10px);
     -o-backdrop-filter: blur(10px);
 }
-.aucap, .aubutton { padding: 15px; }
-.au .auimg {
+.audio #audio_player {
+    display: flex;
+    flex-directon: row;
+    justify-content: space-between;
+    align-content: center;
+}
+.audio #player_caption, .audio #player_button { padding: 15px; }
+.audio #player_img {
     width: 20%;
     height: auto;
     border-right: 2px solid {color:text};
 }
-.au .auimg img {
+.audio #player_img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-.au .aucap {
+.audio #player_caption {
     width: 59%;
     margin-left: 1%;
     display: flex;
@@ -476,7 +473,7 @@ figure.tmblr-full a:hover:after {
     align-content: space-between;
     align-items: space-around;
 }
-.au .aucap i {
+.audio #player_caption i {
     font-family: {text:header font}, sans-serif;
     font-weight: {select:heading text weight};
     font-size: 1.7em;
@@ -487,7 +484,7 @@ figure.tmblr-full a:hover:after {
         text-align: justify;
     {/block:ifjustifyheadingtext}
 }
-.au .aucap b {
+.audio #player_caption b {
     margin: 0;
     margin-top: 5px;
     font-size: 0.75em;
@@ -506,7 +503,7 @@ figure.tmblr-full a:hover:after {
 	height: 100%;
 	background: {color:link hover};
 }
-.au .aubutton {
+.audio #player_button {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -515,20 +512,19 @@ figure.tmblr-full a:hover:after {
 .custom_audio_current_time { margin-bottom: -5px; }
 
 /* quote posts */
-.quote #qu h1 { line-height: 125%; }
-.quote #sor { margin-top: 5px; }
-.quote #sor b {
+.quote #quote_words h1 { line-height: 125%; }
+.quote #quote_source { margin-top: 5px; }
+.quote #quote_source b {
     font-size: 0.75em;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     line-height: 100%;
 }
-.quote #sor a.tumblr_blog { font-size: 1em; }
+.quote #quote_source a.tumblr_blog { font-size: 1em; }
 
 /* link posts */
-.l {
-    margin-bottom: 15px;
+.link_main {
     border: 2px solid {color:text};
 	background: {color:text}25;
     backdrop-filter: blur(10px);
@@ -536,14 +532,14 @@ figure.tmblr-full a:hover:after {
     -moz-backdrop-filter: blur(10px);
     -o-backdrop-filter: blur(10px);
 }
-.l #limg img {
+.link_main #link_img img {
     width: 100%;
     height: auto;
     margin: 0;
     padding: 0;
     border-bottom: 2px solid {color:text};
 }
-.l #lt #ltsub {
+.link_main #link_heading #heading_sub {
     padding: 15px;
     display: flex;
     flex-directon: row;
@@ -551,10 +547,10 @@ figure.tmblr-full a:hover:after {
     align-content: center;
     align-items: center;
 }
-.l #lt #ltsub h1:hover, .l #lt #ltsub i:hover, .l #lt #ltsub:hover, .l #lt:hover {
+.link_main #link_heading #heading_sub h1:hover, .link #link_heading #heading_sub i:hover, .link #link_heading #heading_sub:hover, .link #link_heading:hover {
     cursor: url(https://i.imgur.com/jwLZ88S.png),progress!important;
 }
-.l #lt #ltsub h1 {
+.link_main #link_heading #heading_sub h1 {
     display: inline;
     width: 80%;
     color: {color:text};
@@ -571,21 +567,22 @@ figure.tmblr-full a:hover:after {
     -o-transition: 0.5s;
     transition: 0.5s;
 }
-.l #lt #ltsub h1:hover {
+.link_main #link_heading #heading_sub h1:hover {
     color: {color:link hover};
     -webkit-transition: 0.5s;
     -moz-transition: 0.5s;
     -o-transition: 0.5s;
     transition: 0.5s;
 }
-.l #lt #ltsub:hover h1 { color: {color:link hover}; }
-.l #lh {
+.link_main #link_heading #heading_sub:hover h1 { color: {color:link hover}; }
+.link_main #link_host {
     padding: 0 15px 15px 15px;
     font-size: 0.75em;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
+.link .link_desc #link_excerpt { margin: 15px 0; }
 
 
 /* POSTS INFO */
@@ -942,140 +939,197 @@ a:hover { cursor: url(https://i.imgur.com/jwLZ88S.png),progress!important }
 <div class="posts" id="{PostID}" post-type="{PostType}" data-aos="fade" data-aos-duration="1500">
 
 <!-- text, chat posts -->
+<!-- text posts -->
+<div class="text_wrap">
 {block:Text}
-    <div class="t">
-        {block:Title}
-            <h1>{Title}</h1>
-        {/block:Title}
-        <div class="c">
-            {Body}
+    <div class="text">
+        {block:NotReblog}{Body}{/block:NotReblog}
+        {block:RebloggedFrom}
+        {block:Reblogs}
+        <div class="comment_wrap">
+            <div class="commenter source-head">
+                <span>
+                    {block:HasPermalink}<a href="{Permalink}">{/block:HasPermalink}{Username}{block:HasPermalink}</a>{/block:HasPermalink}
+                </span>
+            </div>
+            <div class="comment">{Body}</div>
         </div>
+        {/block:Reblogs}
+        {/block:RebloggedFrom}
     </div>
 {/block:Text}
+</div>
  
 <!-- photo posts -->
+<div class="photo_wrap">
 {block:Photo}
-    <div class="p">
-        <div class="pbor"><div data-width="{PhotoWidth-HighRes}" data-height="{PhotoHeight-HighRes}" data-lowres="{PhotoURL-500}" data-highres="{PhotoURL-HighRes}" onclick="lightbox(this)"><img src="{PhotoURL-HighRes}"></div></div>
-        {block:Caption}
-            <div class="c">
-                {Caption}
-            </div>
-        {/block:Caption}
+    <div class="photo">
+        <div data-width="{PhotoWidth-HighRes}" data-height="{PhotoHeight-HighRes}" data-lowres="{PhotoURL-500}" data-highres="{PhotoURL-HighRes}" onclick="lightbox(this)"><img src="{PhotoURL-HighRes}"></div>
     </div>
 {/block:Photo}
+</div>
 
 <!-- photoset posts -->
-<div class="pswrap">
-    {block:Photoset}
-        <div class="ps">
-            <div class="photoset-grid" photoset-layout="{PhotosetLayout}">{block:Photos}<div data-width="{PhotoWidth-HighRes}" data-height="{PhotoHeight-HighRes}" data-lowres="{PhotoURL-500}" data-highres="{PhotoURL-HighRes}" onclick="lightbox(this)"><img src="{PhotoURL-HighRes}" /></div>{/block:Photos}</div>
-            {block:Caption}
-                <div class="c">
-                    {Caption}
-                </div>
-            {/block:Caption}
-        </div>
-    {/block:Photoset}
+<div class="photoset_wrap">
+{block:Photoset}
+    <div class="photoset">
+        <div class="photoset-grid" photoset-layout="{PhotosetLayout}">{block:Photos}<div data-width="{PhotoWidth-HighRes}" data-height="{PhotoHeight-HighRes}" data-lowres="{PhotoURL-500}" data-highres="{PhotoURL-HighRes}" onclick="lightbox(this)"><img src="{PhotoURL-HighRes}" /></div>{/block:Photos}</div>
+    </div>
+{/block:Photoset}
 </div>
 
 <!-- video posts -->
+<div class="video_wrap">
 {block:Video}
-    <div class="v">
-        <div class="video">{Video-500}</div>
-        {block:Caption}
-            <div class="c">
-                {Caption}
-            </div>
-        {/block:Caption}
+    <div class="video">
+        {VideoEmbed-500}
     </div>
-{/block:Video} 
+{/block:Video}
+</div>
 
 <!-- ask posts -->
+<div class="ask_wrap">
 {block:Answer}
     <div class="ask">
-        <div id="que">
-            <h1>{Asker} said</h1>
-            <b>{Question}</b>
-        </div>
-        <div id="an">{Answer}</div>
-        {block:Caption}
-            <div class="c">
-                {Caption}
+        <div class="question_wrap">
+            <div class="asker">
+                <h1>{Asker} said</h1>
             </div>
-        {/block:Caption}
+            <b class="question_text">{Question}</b>
+        </div>
+        {block:Answerer}
+        <div class="answer_wrap">
+            <div class="answer_text">{Answer}</div>
+        </div>
+        {block:Reblogs}
+        <div class="reply_wrap">
+            <div class="replier">
+                {block:HasPermalink}<a href="{Permalink}">{/block:HasPermalink}{Username}{block:HasPermalink}</a> {/block:HasPermalink}
+            </div>
+            <div class="reply">{Body}</div>
+        </div>
+        {/block:Reblogs}
+        {/block:Answerer}
+        {block:NotReblog}
+        <div class="answer_wrap">
+            <div class="answerer">
+                <a href="{Permalink}">{Name}</a>
+            </div>
+            <div class="answer_text">{Answer}</div>
+        </div>
+        {/block:NotReblog}
     </div>
 {/block:Answer}
+</div>
 
 <!-- audio posts -->
+<div class="audio_wrap">
 {block:Audio}
     <div class="audio">
         {block:AudioPlayer}
-        <div class="au">
-            <div class="auimg">
+        <div id="audio_player">
+            <div id="player_img">
                 {block:AlbumArt}<img src="{AlbumArtURL}" />{/block:AlbumArt}
             </div>
-            <div class="aucap">
+            <div id="player_caption">
                 {block:TrackName}<i>{TrackName}</i>{/block:TrackName}
-        		{block:Artist}<b>by {Artist}</b>{/block:Artist}
-        		<div class="custom_audio_seekbar"></div>
+                {block:Artist}<b>by {Artist}</b>{/block:Artist}
+                <div class="custom_audio_seekbar"></div>
             </div>
-            <div class="aubutton">
+            <div id="player_button">
                 {AudioPlayer}
                 <span class="custom_audio_buttons"></span><br>
                 <span class="custom_audio_current_time"></span>
             </div>
         </div>
         {/block:AudioPlayer}
-        {block:Caption}
-            <div class="c">
-                {Caption}
-            </div>
-        {/block:Caption}
     </div>
 {/block:Audio}
+</div>
  
 <!-- quote posts -->
+<div class="quote_wrap">
 {block:Quote}
     <div class="quote">
-        <div id="qu">
-            <h1>{Quote}</h1>
-        </div>
-        <div id="sor">
-            {block:Source}<b>{Source}</b>{/block:Source}
-        </div>
+        <div id="quote_words"><h1>{Quote}</h1></div>
+        {block:Source}
+            <div id="quote_source"><b>{Source}</b></div>
+        {/block:Source}
     </div>
 {/block:Quote}
+</div>
 
 <!-- link posts -->
+<div class="link_wrap">
 {block:Link}
-    <div class="lwrap">
-        <div class="l">
-            {block:Thumbnail} 
-            <div id="limg">
-                <img src="{Thumbnail-HighRes}" />
-            </div>
-            {block:Thumbnail} 
-            <div id="lt"><a title="{Name}" target="_blank">
-                <div id="ltsub">
-                    <h1>{Name}</h1>
-                    <i data-feather="arrow-right"></i>
-                </div>
-            </a></div>
-            <div id="lh">
-                {block:Host}{Host}{/block:Host}
-            </div>
-        </div>
-        <div id="le">
-            {block:Excerpt}{Excerpt}{/block:Excerpt}
-        </div>
+    <div class="link">
         {block:Description}
-            <div class="c">
-                {Description}
+        <div class="link_desc">
+            <div class="link_main">
+                <div id="link_img">
+                    {block:Thumbnail} <img src="{Thumbnail-HighRes}" /> {/block:Thumbnail} 
+                </div>
+                <div id="link_heading">
+                    <div id="heading_sub">
+                        <a href="{URL}" title="{Name}" class="path{block:Description} has-desc{/block:Description}" {Target}><h1>{Name}</h1></a> 
+                        <i data-feather="arrow-right"></i>
+                    </div>
+                    <div id="link_host">
+                        {block:Host}{Host}{/block:Host}
+                    </div>
+                </div>
             </div>
+            <div id="link_excerpt">
+                {block:Excerpt}{Excerpt}{/block:Excerpt}
+            </div>
+            {block:RebloggedFrom}
+            {block:Reblogs}
+            <div class="comment_wrap">
+                <div class="commenter source-head">
+                    <span>
+                        {block:HasPermalink}<a href="{Permalink}">{/block:HasPermalink}{Username}{block:HasPermalink}</a>{/block:HasPermalink}
+                    </span>
+                </div>
+                <div class="comment">{Body}</div>
+            </div>
+            {/block:Reblogs}
+            {/block:RebloggedFrom}
+            {block:NotReblog}{Description}{/block:NotReblog}
+        </div>
         {/block:Description}
     </div>
 {/block:Link}
+</div>
+
+<!-- chat posts -->
+<div class="chat_wrap">
+{block:Chat}
+    <div class="chat">
+        {block:Lines}
+        <div class="line"><span class="label">{block:Label}{Label}{/block:Label}</span>{Line}</div>
+        {/block:Lines}
+    </div>
+{/block:Chat}
+</div>
+
+<!-- post captions -->
+{block:Caption}
+<div class="caption">
+    {block:NotReblog}{Caption}{/block:NotReblog}
+    {block:RebloggedFrom}
+    {block:Reblogs}
+    <div class="comment_wrap">
+        <div class="commenter source-head">
+            <span>
+                {block:HasPermalink}<a href="{Permalink}">{/block:HasPermalink}{Username}{block:HasPermalink}</a>{/block:HasPermalink}
+            </span>
+        </div>
+        <div class="comment">{Body}</div>
+    </div>
+    {/block:Reblogs}
+    {/block:RebloggedFrom}
+</div>
+{/block:Caption}
  
 <!-- remove junk text -->
 <!--{block:ContentSource}{SourceURL}{block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}" height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}{block:NoSourceLogo}{SourceLink}{/block:NoSourceLogo}{/block:ContentSource}-->
@@ -1200,7 +1254,6 @@ a:hover { cursor: url(https://i.imgur.com/jwLZ88S.png),progress!important }
     <!-- tippy.js --> <script src="https://unpkg.com/popper.js@1"></script> <script src="https://unpkg.com/tippy.js@5/dist/tippy-bundle.iife.js"></script>
     <!-- audio fix by annasthms --> <script src="https://cdn.jsdelivr.net/gh/annasthms/customaudio@latest/customaudio.min.js"></script>
     <!-- no.js photosets by annasthms and eggdesign --> <script src="https://static.tumblr.com/0podkko/jfMplm3f8/modified_photosets.js"></script>
-    <!-- unnest captions by neothm --> <script src="https://static.tumblr.com/wgg6svp/OoTofxa0c/unnest.min.js"></script>
     <!-- npf photosets fix by glenthemes --> <script src="//npf-images-v3.github.io/script.js"></script>
 
 <!-- start js -->
@@ -1256,15 +1309,6 @@ a:hover { cursor: url(https://i.imgur.com/jwLZ88S.png),progress!important }
                $(this).text(n + 'k');
            }
        });
-       
-    // unnest captions by neothm
-    $(function(){  $('.posts').unnest({ 
-        yourCaption: ".c",
-        newCaptionUsername: true,
-        originalPostCaptionUsername: true,
-        usernameColon: true,
-        tumblrAvatars: false
-    }); }); 
     
     // no.js photosets by annasthms and eggdesign 
     initPhotosets();
