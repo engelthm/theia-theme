@@ -301,8 +301,8 @@ figure.tmblr-full a:hover:after {
     width: 10%;
 }
 .head #contr b:hover { cursor: url(https://i.imgur.com/jwLZ88S.png),progress!important; }
-iframe.tmblr-iframe {
-    display: none;
+.tmblr-iframe {
+    opacity: 0.0;
     top: 70px!important;
     right: 5.5%!important;
     transform: scale(0.75);
@@ -313,6 +313,17 @@ iframe.tmblr-iframe {
     -o-transform-origin: 100% 0;
     -moz-transform: scale(0.75);
     -moz-transform-origin: 100% 0;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+.tmblr-iframe.active {
+    opacity: 1.0;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
 }
 
 
@@ -886,7 +897,7 @@ a:hover { cursor: url(https://i.imgur.com/jwLZ88S.png),progress!important }
             <br><a href="{text:url 4}" title="{text:link 4}">{text:link 4}</a>
         </div>
         <div id="contr">
-            <b class="contr">Controls</b>
+            <b>Controls</b>
         </div>
     </div>
 </div>
@@ -1213,8 +1224,8 @@ a:hover { cursor: url(https://i.imgur.com/jwLZ88S.png),progress!important }
     });
     
     // controls toggle
-    $(".contr").click(function(){
-        $(".tmblr-iframe").toggle(200);
+    $('#contr').click(function() {
+        $('.tmblr-iframe').toggleClass('active');
     });
     
     // audio fix by annasthms
